@@ -1,0 +1,458 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Blend?>
+<?import javafx.scene.effect.BoxBlur?>
+<?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.effect.Reflection?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bin.controls.InterpolAddCrimeController">
+   <columnConstraints>
+      <ColumnConstraints />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints />
+   </rowConstraints>
+   <children>
+      <AnchorPane fx:id="AnchorPaneMidle" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: silver;" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+         <children>
+            <Pane prefHeight="127.0" prefWidth="1280.0" style="-fx-background-color: black;">
+               <children>
+                  <ImageView fitHeight="127.0" fitWidth="1280.0" layoutY="-1.0" opacity="0.23" pickOnBounds="true">
+                     <image>
+                        <Image url="@../assets/maxresdefault.jpg" />
+                     </image>
+                  </ImageView>
+                  <ImageView blendMode="SCREEN" fitHeight="127.0" fitWidth="1280.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/INTERPOL1.jpg" />
+                     </image>
+                  </ImageView>
+                  <Text fill="WHITE" layoutX="423.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CONNECTING POLICE FOR A SAFER WORLD" textAlignment="CENTER">
+                     <font>
+                        <Font name="Bell MT" size="36.0" />
+                     </font>
+                  </Text>
+                  <Pane layoutX="360.0" prefHeight="127.0" prefWidth="2.0" style="-fx-background-color: #a13b00;" />
+                  <Button fx:id="ButtonClose" layoutX="1253.0" layoutY="6.0" mnemonicParsing="false" prefHeight="8.0" prefWidth="20.0" style="-fx-background-color: rgba(192,0,0,0.75); -fx-background-radius: 110 110 110 110;" text="X" textFill="WHITE">
+                     <font>
+                        <Font size="9.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button fx:id="ButtonHidden" layoutX="1223.0" layoutY="6.0" mnemonicParsing="false" prefHeight="8.0" prefWidth="20.0" style="-fx-background-color: rgba(192,150,150,0.75); -fx-background-radius: 110 110 110 110;" text="_" underline="true">
+                     <font>
+                        <Font size="9.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+               </children>
+               <effect>
+                  <Reflection fraction="0.34" topOpacity="1.0" />
+               </effect>
+            </Pane>
+            <GridPane layoutX="11.0" layoutY="237.0" AnchorPane.leftAnchor="11.0">
+              <columnConstraints>
+                <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" />
+                <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints valignment="CENTER" vgrow="ALWAYS" />
+                <RowConstraints valignment="CENTER" />
+                <RowConstraints valignment="CENTER" />
+                  <RowConstraints valignment="CENTER" />
+              </rowConstraints>
+               <children>
+                  <Text fx:id="TextLName" boundsType="LOGICAL_VERTICAL_CENTER" strokeType="OUTSIDE" strokeWidth="0.0" text="Lastname :" wrappingWidth="237.82568359375" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                     <font>
+                        <Font name="Bell MT" size="27.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </GridPane.margin>
+                  </Text>
+                  <TextField fx:id="FieldLastname" prefWidth="182.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                     <GridPane.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </GridPane.margin>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding></TextField>
+                  <Text fx:id="TextFName" boundsType="LOGICAL_VERTICAL_CENTER" strokeType="OUTSIDE" strokeWidth="0.0" text="Forename :" wrappingWidth="236.767578125" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                     <font>
+                        <Font name="Bell MT" size="27.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </GridPane.margin>
+                  </Text>
+                  <TextField fx:id="FieldForename" prefWidth="218.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                     <GridPane.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </GridPane.margin>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding></TextField>
+                  <Text fx:id="TextNation" boundsType="LOGICAL_VERTICAL_CENTER" strokeType="OUTSIDE" strokeWidth="0.0" text="Nationality :" wrappingWidth="237.05810546875" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                     <font>
+                        <Font name="Bell MT" size="27.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </GridPane.margin>
+                  </Text>
+                  <ChoiceBox fx:id="ChoiceBoxNational" prefWidth="259.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <GridPane.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </GridPane.margin>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding></ChoiceBox>
+                  <Text fx:id="TextAlias" boundsType="LOGICAL_VERTICAL_CENTER" strokeType="OUTSIDE" strokeWidth="0.0" text="Alias :" wrappingWidth="236.34375" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                     <font>
+                        <Font name="Bell MT" size="27.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </GridPane.margin>
+                  </Text>
+                  <TextField fx:id="FieldAlias" prefWidth="252.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                     <GridPane.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </GridPane.margin>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding></TextField>
+               </children>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <effect>
+                  <InnerShadow />
+               </effect>
+            </GridPane>
+            <GridPane layoutX="557.0" layoutY="246.0">
+              <columnConstraints>
+                <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" />
+                <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints valignment="CENTER" vgrow="ALWAYS" />
+                <RowConstraints valignment="CENTER" vgrow="ALWAYS" />
+                <RowConstraints valignment="CENTER" vgrow="ALWAYS" />
+                  <RowConstraints valignment="CENTER" vgrow="ALWAYS" />
+                  <RowConstraints valignment="CENTER" vgrow="ALWAYS" />
+                  <RowConstraints valignment="CENTER" vgrow="ALWAYS" />
+                  <RowConstraints valignment="CENTER" vgrow="ALWAYS" />
+                  <RowConstraints valignment="CENTER" vgrow="ALWAYS" />
+                  <RowConstraints valignment="CENTER" vgrow="ALWAYS" />
+              </rowConstraints>
+               <children>
+                  <Text fx:id="TextBirth" boundsType="LOGICAL_VERTICAL_CENTER" strokeType="OUTSIDE" strokeWidth="0.0" text="Birthday :" wrappingWidth="229.41064453125" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                     <font>
+                        <Font name="Bell MT" size="27.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </GridPane.margin>
+                  </Text>
+                  <DatePicker fx:id="DatePickerBirthday" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                     <GridPane.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </GridPane.margin>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding></DatePicker>
+                  <Text fx:id="TextCity" boundsType="LOGICAL_VERTICAL_CENTER" strokeType="OUTSIDE" strokeWidth="0.0" text="City of birth :" wrappingWidth="225.7900390625" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                     <font>
+                        <Font name="Bell MT" size="27.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </GridPane.margin>
+                  </Text>
+                  <TextField fx:id="FieldCityBirth" prefWidth="73.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                     <GridPane.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </GridPane.margin>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding></TextField>
+                  <Text fx:id="TextHeight" boundsType="LOGICAL_VERTICAL_CENTER" strokeType="OUTSIDE" strokeWidth="0.0" text="Height centimeters' :" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                     <font>
+                        <Font name="Bell MT" size="27.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </GridPane.margin>
+                  </Text>
+                  <Spinner fx:id="SpinnerHeight" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                     <GridPane.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </GridPane.margin>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding></Spinner>
+                  <Text fx:id="TextSex" boundsType="LOGICAL_VERTICAL_CENTER" strokeType="OUTSIDE" strokeWidth="0.0" text="Sex :" wrappingWidth="225.6025390625" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                     <font>
+                        <Font name="Bell MT" size="27.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </GridPane.margin>
+                  </Text>
+                  <ChoiceBox fx:id="ChoiceBoxSex" prefWidth="175.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <GridPane.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </GridPane.margin>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding></ChoiceBox>
+                  <Text fx:id="TextEye" boundsType="LOGICAL_VERTICAL_CENTER" strokeType="OUTSIDE" strokeWidth="0.0" text="Colour of eyes :" wrappingWidth="233.18701171875" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="4" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                     <font>
+                        <Font name="Bell MT" size="27.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </GridPane.margin>
+                  </Text>
+                  <ChoiceBox fx:id="ChoiceBoxEyes" prefWidth="175.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="4" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <GridPane.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </GridPane.margin>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding></ChoiceBox>
+                  <Text fx:id="TextHair" boundsType="LOGICAL_VERTICAL_CENTER" strokeType="OUTSIDE" strokeWidth="0.0" text="Colour of hair :" wrappingWidth="232.52197265625" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="5" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                     <font>
+                        <Font name="Bell MT" size="27.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </GridPane.margin>
+                  </Text>
+                  <ChoiceBox fx:id="ChoiceBoxHair" prefWidth="175.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="5" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <GridPane.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </GridPane.margin>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding></ChoiceBox>
+                  <Text fx:id="TextWanted" boundsType="LOGICAL_VERTICAL_CENTER" strokeType="OUTSIDE" strokeWidth="0.0" text="Wanted by :" wrappingWidth="237.0" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="6" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                     <font>
+                        <Font name="Bell MT" size="27.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </GridPane.margin>
+                  </Text>
+                  <ChoiceBox fx:id="ChoiceBoxCountry" prefWidth="280.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="6" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                     <GridPane.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </GridPane.margin>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding></ChoiceBox>
+                  <TextField fx:id="FieldGrouping" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="7" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                     <GridPane.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </GridPane.margin>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </TextField>
+                  <Text fx:id="TextGrouping" strokeType="OUTSIDE" strokeWidth="0.0" text="Grouping :" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="7" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                     <font>
+                        <Font name="Bell MT" size="27.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </GridPane.margin>
+                  </Text>
+               </children>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+               <effect>
+                  <InnerShadow />
+               </effect>
+            </GridPane>
+            <Button fx:id="ButtonEnter" blendMode="MULTIPLY" defaultButton="true" layoutX="1045.0" layoutY="643.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="182.0" style="-fx-background-color: #D3D3D3;" text="Enter">
+               <font>
+                  <Font name="Bell MT" size="27.0" />
+               </font>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <effect>
+                  <DropShadow blurType="GAUSSIAN" height="10.0" radius="4.5" width="10.0" />
+               </effect>
+            </Button>
+            <Text fx:id="TextMain" layoutX="399.0" layoutY="229.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Input Person" wrappingWidth="683.0">
+               <font>
+                  <Font name="Bell MT" size="48.0" />
+               </font>
+            </Text>
+            <VBox layoutX="15.0" layoutY="477.0">
+               <children>
+                  <Text fx:id="TextAbout" boundsType="LOGICAL_VERTICAL_CENTER" strokeType="OUTSIDE" strokeWidth="0.0" text="About person :" wrappingWidth="473.736328125" VBox.vgrow="ALWAYS">
+                     <font>
+                        <Font name="Bell MT" size="27.0" />
+                     </font>
+                  </Text>
+                  <TextArea fx:id="AreaAboutText" VBox.vgrow="ALWAYS" />
+               </children>
+               <effect>
+                  <InnerShadow />
+               </effect>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </VBox>
+            <Pane layoutY="143.0" prefHeight="52.0" prefWidth="1280.0" styleClass="pane" stylesheets="@drawable/pane.css">
+               <children>
+                  <HBox layoutX="-4.0" prefHeight="40.0" prefWidth="683.0">
+                     <children>
+                        <HBox>
+                           <children>
+                              <Button fx:id="ButtonFindGroup" mnemonicParsing="false" prefHeight="40.0" prefWidth="149.0" style="-fx-background-color: white; -fx-background-radius: 0;" text="Find a group">
+                                 <font>
+                                    <Font name="Bodoni MT" size="14.0" />
+                                 </font>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                           </children>
+                        </HBox>
+                        <HBox>
+                           <children>
+                              <Button fx:id="ButtonFindCrime" mnemonicParsing="false" prefHeight="40.0" prefWidth="149.0" style="-fx-background-color: white; -fx-background-radius: 0;" text="Find a criminal">
+                                 <font>
+                                    <Font name="Bodoni MT" size="14.0" />
+                                 </font>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                           </children>
+                        </HBox>
+                        <HBox>
+                           <children>
+                              <Button fx:id="ButtonAddCrime" mnemonicParsing="false" prefHeight="40.0" prefWidth="192.0" style="-fx-background-color: white; -fx-background-radius: 0;" text="Add a criminal">
+                                 <font>
+                                    <Font name="Bodoni MT" size="14.0" />
+                                 </font>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                                 <effect>
+                                    <ColorAdjust brightness="-0.15" />
+                                 </effect>
+                              </Button>
+                           </children>
+                        </HBox>
+                        <HBox>
+                           <children>
+                              <Button fx:id="ButtonAddGroup" mnemonicParsing="false" opacity="0.7" prefHeight="40.0" prefWidth="192.0" style="-fx-background-color: white; -fx-background-radius: 0 0 20;" text="Add a grouping">
+                                 <font>
+                                    <Font name="Bodoni MT" size="14.0" />
+                                 </font>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                           </children>
+                        </HBox>
+                     </children>
+                  </HBox>
+                  <HBox alignment="TOP_RIGHT" layoutX="1113.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="40.0" prefWidth="167.0">
+                     <children>
+                        <Button fx:id="ButtonAboutInterpol" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="39.0" prefWidth="155.0" style="-fx-background-color: white; -fx-background-radius: 0 0 0 10;" text="About Interpol">
+                           <font>
+                              <Font name="Bodoni MT" size="14.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                     </children>
+                  </HBox>
+               </children>
+               <effect>
+                  <DropShadow blurType="GAUSSIAN" height="24.0" radius="11.25" width="23.0" />
+               </effect>
+            </Pane>
+            <Pane layoutX="542.0" layoutY="246.0" prefHeight="474.0" prefWidth="2.0" style="-fx-background-color: grey;">
+               <effect>
+                  <BoxBlur />
+               </effect>
+            </Pane>
+            <ImageView blendMode="ADD" fitHeight="200.0" fitWidth="200.0" layoutX="1067.0" layoutY="356.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@drawable/PersonLocked.jpg" />
+               </image>
+               <effect>
+                  <Blend mode="SCREEN" />
+               </effect>
+            </ImageView>
+            <Button fx:id="ButtonUpdate" blendMode="MULTIPLY" layoutX="843.0" layoutY="643.0" mnemonicParsing="false" style="-fx-background-color: #D3D3D3;" text="Update">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <effect>
+                  <DropShadow blurType="GAUSSIAN" height="10.0" radius="4.5" width="10.0" />
+               </effect>
+               <font>
+                  <Font name="Bell MT" size="27.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+   </children>
+   <effect>
+      <Blend mode="SOFT_LIGHT" />
+   </effect>
+</GridPane>
