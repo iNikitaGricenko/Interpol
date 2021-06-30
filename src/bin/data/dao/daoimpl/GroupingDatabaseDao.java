@@ -105,14 +105,14 @@ public class GroupingDatabaseDao implements GroupingDao {
 
             if(!resultSet.next()) {
                 preparedStatement = getDbConnection().prepareStatement(sqlInto);
-                preparedStatement.setLong(1, model.getId());
-                preparedStatement.setString(2, model.getName());
-                preparedStatement.setString(3, model.getSpecification());
-                preparedStatement.setString(4, model.getLocation());
-                preparedStatement.setString(5, model.getAboutGrouping());
-                preparedStatement.setDate(6, model.getCreationDate());
-                preparedStatement.setString(7, model.getCountry());
-                preparedStatement.setString(9, model.getDangerLvl());
+                preparedStatement.setLong(0, model.getId());
+                preparedStatement.setString(1, model.getName());
+                preparedStatement.setString(2, model.getSpecification());
+                preparedStatement.setString(3, model.getLocation());
+                preparedStatement.setString(4, model.getAboutGrouping());
+                preparedStatement.setDate(5, model.getCreationDate());
+                preparedStatement.setString(6, model.getCountry());
+                preparedStatement.setString(7, model.getDangerLvl());
 
                 preparedStatement.executeUpdate();
             }

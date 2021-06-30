@@ -2,9 +2,9 @@ package bin.data;
 
 public class Config {
     public String dbPass;
-    public String dbHost = "35.235.33.212";
-    public String dbPort = "3306";
-    public String dbUser = "boss";
+    public String dbHost = "localhost"; //previously: 35.235.33.212
+    public String dbPort = "3306"; //previously: 3306
+    public String dbUser = "boss"; //previously: boss
 
     static Config _instance = null;
     private Config(){}

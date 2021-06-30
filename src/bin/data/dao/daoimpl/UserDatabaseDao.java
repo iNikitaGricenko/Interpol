@@ -15,7 +15,7 @@ public class UserDatabaseDao implements UserDao {
     User user = new User();
     List<User> userList = new ArrayList<>();
     public Connection getDbConnection() throws SQLException, ClassNotFoundException {
-        String connectionString = "jdbc:mysql://"+config.dbHost+":"+config.dbPort+"/users?serverTimezone=Europe/Moscow";
+        String connectionString = "jdbc:mysql://"+config.dbHost+":"+config.dbPort+"/user?serverTimezone=Europe/Moscow";
 
         Class.forName("com.mysql.cj.jdbc.Driver");
 

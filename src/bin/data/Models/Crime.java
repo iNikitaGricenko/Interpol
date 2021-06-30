@@ -16,6 +16,7 @@ public class Crime extends Model{
     private String Hair = "";
     private String WantedBy = "";
     private String Grouping = "";
+    private byte [] Photo = null;
 
     public String getGrouping() {
         return Grouping;
@@ -145,6 +146,13 @@ public class Crime extends Model{
 
     public Crime setWantedBy(String wantedBy) {
         WantedBy = wantedBy;
+        return this;
+    }
+
+    public byte [] getPhoto() {return Photo;}
+
+    public Crime setPhoto(byte [] bytes) {
+        Photo = bytes;
         return this;
     }
 }

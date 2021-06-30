@@ -14,14 +14,20 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
+import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.nio.file.Files;
 import java.sql.Date;
 import java.sql.SQLException;
 
@@ -72,6 +78,9 @@ public class InterpolAddCrimeController {
             ButtonUpdate;
     @FXML
     private AnchorPane AnchorPaneMidle;
+
+    @FXML
+    private ImageView Photo;
 
     Select selecting = new Select();
     private double xOffset, yOffset;
@@ -190,6 +199,32 @@ public class InterpolAddCrimeController {
                 stage.setY(event.getScreenY() + yOffset);
             }
         });
+        Photo.setOnMouseClicked(e -> {
+            File file = new FileChooser().showOpenDialog(null);
+            try {
+                Photo.setImage(new Image(String.valueOf(file.toURL())));
+            } catch (MalformedURLException malformedURLException) {
+                malformedURLException.printStackTrace();
+            }
+        });
+    }
+
+    public void SaveFromPhoto(File file) {
+        try {
+            byte [] bytes = Files.readAllBytes(file.toPath());
+        } catch (IOException ioException) {
+            ioException.printStackTrace();
+        }
+    }
+
+    public void SaveToPhoto() {
+        BufferedImage image5;
+        /*try {
+            image5 = ImageIO.read(new ByteArrayInputStream(bytes));
+            ImageIO.write(image5, "jpg", new File("D:/NikitaS-site/snap5.jpg"));
+        } catch (IOException ioException) {
+            ioException.printStackTrace();
+        }*/
     }
 
     public void UpdateCrime(){
@@ -207,6 +242,13 @@ public class InterpolAddCrimeController {
                 .setWantedBy(ChoiceBoxCountry.getValue())
                 .setSex(ChoiceBoxSex.getValue())
                 .setGrouping(FieldGrouping.getText());
+        try {
+            byte [] bytes = Files.readAllBytes(new File(String.valueOf(Photo.getImage().getUrl().replaceAll("file:/", ""))).toPath());
+            System.out.println("Length " + bytes.length);
+            crime.setPhoto(bytes);
+        } catch (IOException ioException) {
+            ioException.printStackTrace();
+        }
 
         Alert alert = new Alert(Alert.AlertType.NONE);
         alert.setTitle("Status");
@@ -244,6 +286,14 @@ public class InterpolAddCrimeController {
                 .setWantedBy(ChoiceBoxCountry.getValue())
                 .setSex(ChoiceBoxSex.getValue())
                 .setGrouping(FieldGrouping.getText());
+
+        try {
+            byte [] bytes = Files.readAllBytes(new File(String.valueOf(Photo.getImage().getUrl().replaceAll("file:/", ""))).toPath());
+            System.out.println("Length " + bytes.length);
+            crime.setPhoto(bytes);
+        } catch (IOException ioException) {
+            ioException.printStackTrace();
+        }
         try {
             crime.setBirthday(Date.valueOf(DatePickerBirthday.getValue().toString()));
         } catch (NullPointerException nullPointerException) {

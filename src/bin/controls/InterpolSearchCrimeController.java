@@ -25,7 +25,12 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -109,7 +114,7 @@ public class InterpolSearchCrimeController {
                 TextSNation.setText(processFilesFromFolder(LanguageFolder, "Nationality", Preferences.lang)+" :");
                 TextSSex.setText(processFilesFromFolder(LanguageFolder, "Sex", Preferences.lang)+" :");
                 TextSWanted.setText(processFilesFromFolder(LanguageFolder, "WantedBy", Preferences.lang)+" :");
-                TextSCity.setText(processFilesFromFolder(LanguageFolder, "City", Preferences.lang)+" :");
+                TextSCity.setText(processFilesFromFolder(LanguageFolder, "CityOfBirth", Preferences.lang)+" :");
                 TextSAlias.setText(processFilesFromFolder(LanguageFolder, "Alias", Preferences.lang)+" :");
                 TextSHeight.setText(processFilesFromFolder(LanguageFolder, "Height", Preferences.lang)+" :");
                 TextSAbout.setText(processFilesFromFolder(LanguageFolder, "AboutPerson", Preferences.lang)+" :");
@@ -197,6 +202,24 @@ public class InterpolSearchCrimeController {
         });
     }
 
+    public void SaveFromPhoto(File file) {
+        try {
+            byte [] bytes = Files.readAllBytes(file.toPath());
+        } catch (IOException ioException) {
+            ioException.printStackTrace();
+        }
+    }
+
+    public void SaveToPhoto() {
+        BufferedImage image5;
+        /*try {
+            image5 = ImageIO.read(new ByteArrayInputStream(bytes));
+            ImageIO.write(image5, "jpg", new File("D:/NikitaS-site/snap5.jpg"));
+        } catch (IOException ioException) {
+            ioException.printStackTrace();
+        }*/
+    }
+
     private void SearchingCrime()
     {
         crime = new Crime();
@@ -238,7 +261,6 @@ public class InterpolSearchCrimeController {
             forename.playAnim();
         }
     }
-
     class sqlThread extends Thread{
         @Override
         public synchronized void run() {
@@ -255,7 +277,7 @@ public class InterpolSearchCrimeController {
         TextCounterAge.setVisible(false);
         SliderAge.setVisible(false);
         CurrentAge.setVisible(false);
-        PersonLocked.setVisible(false);
+        //PersonLocked.setVisible(false);
 
         TextMain.setText("Result: ");
 
@@ -270,6 +292,20 @@ public class InterpolSearchCrimeController {
         LabelEye.setText(crime.getEye());
         LabelHair.setText(crime.getHair());
         LabelWantedBy.setText(crime.getWantedBy());
+        System.out.println(crime.getPhoto().length);
+
+        BufferedImage image5 = null;
+        try {
+            image5 = ImageIO.read(new ByteArrayInputStream(crime.getPhoto()));
+            ImageIO.write(image5, "jpg", new File("temp/temp.jpg"));
+            File file = new File("temp/temp.jpg");
+            System.out.println(file.getPath());
+            PersonLocked.setImage(new Image(String.valueOf(file.toURL())));
+            PersonLocked.setFitHeight(200);
+            PersonLocked.setFitWidth(250);
+        } catch (IOException ioException) {
+            ioException.printStackTrace();
+        }
 
         TextAreaAbout.setText(crime.getAbout());
         TextAreaAbout.setWrapText(true);

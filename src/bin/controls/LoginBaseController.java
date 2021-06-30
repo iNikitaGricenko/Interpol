@@ -39,7 +39,6 @@ public class LoginBaseController extends LoginUserController {
     @FXML
     private Pane PaneTop;
 
-
     Select selecting = new Select();
 
     @FXML

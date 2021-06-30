@@ -2,6 +2,7 @@ package bin.data;
 
 public class Const {
     public static final String USERS_TABLE = "user";
+
     public static final String USERS_ID = "iduser";
     public static final String USERS_LOGIN = "login";
     public static final String USERS_PASSWORD = "password";
@@ -28,12 +29,14 @@ public class Const {
     public static final String CRIMINAL_WANTED = "wantedby";
     public static final String CRIMINAL_ABOUT = "about";
     public static final String CRIMINAL_GROUPING = "grouping_name";
+    public static final String CRIMINAL_PHOTO = "cphoto";
 
     // ---
     // crime, table grouping
     // ---
 
     public static final String CRIMES_TABLE_GROUPING = "ggrouping";
+
     public static final String GROUPING_ID = "idgrouping";
     public static final String GROUPING_NAME = "g_name";
     public static final String GROUPING_SPEC = "g_specific";
@@ -44,4 +47,5 @@ public class Const {
     public static final String GROUPING_MEMBERS = "g_mem";
     public static final String GROUPING_DANGER = "g_danglvl";
     public static final String GROUPING_WANTED = "g_wanted";
+    public static final String GROUPING_PHOTO = "g_photo";
 }

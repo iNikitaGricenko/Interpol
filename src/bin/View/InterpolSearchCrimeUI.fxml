@@ -467,13 +467,10 @@
                   <Font size="18.0" />
                </font>
             </Text>
-            <ImageView fx:id="PersonLocked" blendMode="ADD" fitHeight="274.0" fitWidth="279.0" layoutX="993.0" layoutY="232.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="PersonLocked" fitHeight="274.0" fitWidth="279.0" layoutX="993.0" layoutY="232.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@drawable/PersonLocked.jpg" />
                </image>
-               <effect>
-                  <Blend mode="SCREEN" />
-               </effect>
             </ImageView>
             <HBox layoutX="448.0" layoutY="563.0" minHeight="-Infinity" minWidth="-Infinity">
                <children>

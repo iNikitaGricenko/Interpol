@@ -29,6 +29,7 @@
       <element id="directory" name="Language">
         <element id="dir-copy" path="$PROJECT_DIR$/Language" />
       </element>
+      <element id="directory" name="temp" />
     </root>
   </artifact>
 </component>

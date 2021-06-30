@@ -29,28 +29,13 @@ public class Launcher extends Application {
         setPrimaryStage(primaryStage);
         FXMLLoader loader = new FXMLLoader(getClass().getResource("View/LoginBaseUI.fxml"));
         Parent root = loader.load();
-        Scene scene = new Scene(root, 513, 314);
-        final int[] counter = {0};
+        Scene scene = new Scene(root);
 
         root.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent event) {
                 if(event.getCode().equals(KeyCode.ESCAPE)){
                     primaryStage.hide();
-                }
-                else if(event.getCode().equals(KeyCode.F)) {
-                    switch (counter[0]) {
-                        case 0:
-                            primaryStage.setWidth(1026);
-                            primaryStage.setHeight(704);
-                            counter[0]++;
-                            break;
-                        case 1:
-                            primaryStage.setWidth(513);
-                            primaryStage.setHeight(352);
-                            counter[0]--;
-                            break;
-                    }
                 }
             }
         });

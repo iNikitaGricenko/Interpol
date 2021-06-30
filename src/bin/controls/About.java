@@ -46,9 +46,9 @@ public class About {
     public static Stage stage = new Stage();
     private double xOffset, yOffset;
     
-    Preferences preferences = new Preferences() {
+    Preferences preferences = new Preferences(){
             @Override
-            public void Localization() throws IOException{
+            public void Localization() throws IOException {
             ImagineYour.setText(processFilesFromFolder(LanguageFolder, "ImagineYour1", Preferences.lang)+"\n"+processFilesFromFolder(LanguageFolder, "ImagineYour2", Preferences.lang));
             OurFullName.setText(processFilesFromFolder(LanguageFolder, "OurFullName1", Preferences.lang)+"\n\n"+processFilesFromFolder(LanguageFolder, "OurFullName2", Preferences.lang));
             LongText.setText(processFilesFromFolder(LanguageFolder, "LongText1", Preferences.lang)+"\n\n"+processFilesFromFolder(LanguageFolder, "LongText2", Preferences.lang)+"\n\n"+processFilesFromFolder(LanguageFolder, "LongText3", Preferences.lang));

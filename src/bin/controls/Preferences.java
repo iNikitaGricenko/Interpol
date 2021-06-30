@@ -27,7 +27,7 @@ public abstract class Preferences {
         }
         return Word;
     }
-    public final String Localization(File entry, String parametr, Language language) throws FileNotFoundException, IOException {
+    private final String Localization(File entry, String parametr, Language language) throws FileNotFoundException, IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(entry), "UTF-8"));
         String finalStr;
         String []arr;

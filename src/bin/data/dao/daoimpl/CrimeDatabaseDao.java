@@ -2,9 +2,11 @@ package bin.data.dao.daoimpl;
 
 import bin.data.Config;
 import bin.data.Const;
-import bin.data.dao.CrimeDao;
 import bin.data.Models.Crime;
+import bin.data.dao.CrimeDao;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.*;
 import java.util.List;
 
@@ -70,7 +72,9 @@ public class CrimeDatabaseDao implements CrimeDao {
                     + Const.CRIMINAL_BIRTHDAY + "," + Const.CRIMINAL_CITYBIRTH + ","
                     + Const.CRIMINAL_HEIGHT + "," + Const.CRIMINAL_SEX + ","
                     + Const.CRIMINAL_EYE + "," + Const.CRIMINAL_HAIR + ","
-                    + Const.CRIMINAL_WANTED + "," + Const.CRIMINAL_GROUPING + ")" + "VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)";
+                    + Const.CRIMINAL_WANTED + "," + Const.CRIMINAL_GROUPING + ","
+                    + Const.CRIMINAL_PHOTO + ")"
+                    + "VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         ResultSet resultSet = null;
         try {
             PreparedStatement preparedStatement = getDbConnection().prepareStatement(sqlInto);
@@ -87,6 +91,10 @@ public class CrimeDatabaseDao implements CrimeDao {
             preparedStatement.setString(11, model.getHair());
             preparedStatement.setString(12, model.getWantedBy());
             preparedStatement.setString(13, model.getGrouping());
+            Blob blob = dbConnection.createBlob();
+            blob.setBytes(1, model.getPhoto());
+            preparedStatement.setBlob(14, blob);
+            blob.free();
 
             preparedStatement.executeUpdate();
         } catch (ClassNotFoundException c) {
@@ -102,11 +110,12 @@ public class CrimeDatabaseDao implements CrimeDao {
     @Override
     public CrimeDao update(Crime model) {
         PreparedStatement preparedStatement = null;
-        String sql = "UPDATE "+Const.CRIMES_TABLE_CRIMINAL+" SET "+Const.CRIMINAL_ALIAS+" =?, "+Const.CRIMINAL_BIRTHDAY+" =?, "
-                +Const.CRIMINAL_CITYBIRTH+" =?, "+Const.CRIMINAL_HEIGHT+" =?, "+Const.CRIMINAL_SEX+" =?, "
-                +Const.CRIMINAL_EYE+" =?, "+Const.CRIMINAL_HAIR+" =?, "+Const.CRIMINAL_WANTED+" = ?, "
-                +Const.CRIMINAL_ABOUT+" =?" +
-                " WHERE "+Const.CRIMINAL_LASTNAME+" =? AND "+Const.CRIMINAL_FORENAME+" =? AND "+Const.CRIMINAL_NATIONALITY+" =?";
+        String sql = "UPDATE " + Const.CRIMES_TABLE_CRIMINAL +
+                " SET " + Const.CRIMINAL_ALIAS + " =?, " + Const.CRIMINAL_BIRTHDAY + " =?, "
+                + Const.CRIMINAL_CITYBIRTH + " =?, " + Const.CRIMINAL_HEIGHT + " =?, " + Const.CRIMINAL_SEX + " =?, "
+                + Const.CRIMINAL_EYE + " =?, " + Const.CRIMINAL_HAIR + " =?, " + Const.CRIMINAL_WANTED + " = ?, "
+                + Const.CRIMINAL_ABOUT + " =?, " + Const.CRIMINAL_GROUPING + " =?, " + Const.CRIMINAL_PHOTO + "=?" +
+                " WHERE " + Const.CRIMINAL_LASTNAME + " =? AND " + Const.CRIMINAL_FORENAME + " =? AND " + Const.CRIMINAL_NATIONALITY + " =?";
         try {
             preparedStatement = getDbConnection().prepareStatement(sql);
 
@@ -119,10 +128,15 @@ public class CrimeDatabaseDao implements CrimeDao {
             preparedStatement.setString(7, model.getHair());
             preparedStatement.setString(8, model.getWantedBy());
             preparedStatement.setString(9, model.getAbout());
+            preparedStatement.setString(10, model.getGrouping());
+            Blob blob = dbConnection.createBlob();
+            blob.setBytes(1, model.getPhoto());
+            preparedStatement.setBlob(11, blob);
+            blob.free();
 
-            preparedStatement.setString(10, model.getLastname());
-            preparedStatement.setString(11, model.getFirstname());
-            preparedStatement.setString(12, model.getNationality());
+            preparedStatement.setString(12, model.getLastname());
+            preparedStatement.setString(13, model.getFirstname());
+            preparedStatement.setString(14, model.getNationality());
 
             preparedStatement.addBatch();
             preparedStatement.executeUpdate();
@@ -173,7 +187,7 @@ public class CrimeDatabaseDao implements CrimeDao {
     }
 
     @Override
-    public CrimeDao addSecondaryInfo(String Alias, String AboutPerson, Date BirthDay, String CityOfBirth, Integer Height, String Sex, String Eye, String Hair, String WantedBy) {
+    public CrimeDao addSecondaryInfo(String Alias, String AboutPerson, Date BirthDay, String CityOfBirth, Integer Height, String Sex, String Eye, String Hair, String WantedBy, String groupingName, byte[] photo) {
         crime.setAlias(Alias);
         crime.setAbout(AboutPerson);
         crime.setBirthday(BirthDay);
@@ -183,6 +197,8 @@ public class CrimeDatabaseDao implements CrimeDao {
         crime.setEye(Eye);
         crime.setHair(Hair);
         crime.setWantedBy(WantedBy);
+        crime.setGrouping(groupingName);
+        crime.setPhoto(photo);
         return this;
     }
 
@@ -214,11 +230,17 @@ public class CrimeDatabaseDao implements CrimeDao {
                 crime.setHair(resultSet.getString(11));
                 crime.setWantedBy(resultSet.getString(12));
                 crime.setGrouping(resultSet.getString(13));
+                Blob blob = resultSet.getBlob("cphoto");
+                InputStream inputStream = blob.getBinaryStream();
+                crime.setPhoto(inputStream.readAllBytes());
+                blob.free();
             }
         } catch (SQLException sqlException) {
             sqlException.printStackTrace();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
+        } catch (IOException ioException) {
+            ioException.printStackTrace();
         }
         return this;
     }
