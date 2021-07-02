@@ -6,6 +6,8 @@ import bin.data.Models.Crime;
 import bin.data.Models.Grouping;
 import bin.data.dao.GroupingDao;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -90,8 +92,9 @@ public class GroupingDatabaseDao implements GroupingDao {
                     + Const.GROUPING_SPEC + "," + Const.GROUPING_LOCATION + ","
                     + Const.GROUPING_ABOUT + "," + Const.GROUPING_DATE + ","
                     + Const.GROUPING_CITYDATE + "," + Const.GROUPING_MEMBERS + ","
-                    + Const.GROUPING_DANGER + "," + Const.GROUPING_WANTED + ")"
-                    + "VALUES(?,?,?,?,?,?,?,?,?)";
+                    + Const.GROUPING_DANGER + "," + Const.GROUPING_WANTED + ","
+                    + Const.GROUPING_PHOTO + ")"
+                    + "VALUES(?,?,?,?,?,?,?,?,?,?)";
         String sqlFrom = "SELECT " + Const.GROUPING_NAME + ", " + Const.GROUPING_SPEC + ", " + Const.GROUPING_LOCATION + " FROM " + Const.CRIMES_TABLE_CRIMINAL +
                 " WHERE " + Const.GROUPING_NAME + "=? AND " + Const.GROUPING_SPEC + "=? AND " + Const.GROUPING_LOCATION + "=?";
         ResultSet resultSet = null;
@@ -113,6 +116,11 @@ public class GroupingDatabaseDao implements GroupingDao {
                 preparedStatement.setDate(5, model.getCreationDate());
                 preparedStatement.setString(6, model.getCountry());
                 preparedStatement.setString(7, model.getDangerLvl());
+                preparedStatement.setString(8, model.getWantedBy());
+                Blob blob = dbConnection.createBlob();
+                blob.setBytes(1, model.getPhoto());
+                preparedStatement.setBlob(9, blob);
+                blob.free();
 
                 preparedStatement.executeUpdate();
             }
@@ -143,7 +151,7 @@ public class GroupingDatabaseDao implements GroupingDao {
         PreparedStatement preparedStatement = null;
         String sql = "UPDATE " + Const.CRIMES_TABLE_GROUPING + " SET " + Const.GROUPING_LOCATION + "=?, " + Const.GROUPING_ABOUT + "=?, "
                 + Const.GROUPING_DATE + " =?, " + Const.GROUPING_CITYDATE + "=?, " + Const.GROUPING_MEMBERS + "=?, " + Const.GROUPING_DANGER + "=?, "
-                + Const.GROUPING_WANTED + "=?" + " WHERE " + Const.GROUPING_NAME + "=? AND " + Const.GROUPING_SPEC + "=?";
+                + Const.GROUPING_WANTED + "=?, " + Const.GROUPING_PHOTO + "=? " + " WHERE " + Const.GROUPING_NAME + "=? AND " + Const.GROUPING_SPEC + "=?";
         try{
             preparedStatement = getDbConnection().prepareStatement(sql);
 
@@ -154,9 +162,13 @@ public class GroupingDatabaseDao implements GroupingDao {
             preparedStatement.setInt(5, model.getMember());
             preparedStatement.setString(6, model.getDangerLvl());
             preparedStatement.setString(7, model.getWantedBy());
+            Blob blob = dbConnection.createBlob();
+            blob.setBytes(1, model.getPhoto());
+            preparedStatement.setBlob(8, blob);
+            blob.free();
 
-            preparedStatement.setString(8, model.getName());
-            preparedStatement.setString(9, model.getSpecification());
+            preparedStatement.setString(9, model.getName());
+            preparedStatement.setString(10, model.getSpecification());
 
             preparedStatement.addBatch();
             preparedStatement.executeUpdate();
@@ -276,11 +288,17 @@ public class GroupingDatabaseDao implements GroupingDao {
                 grouping.setCountry(resultSet.getString(7));
                 grouping.setMember(resultSet.getInt(8));
                 grouping.setDangerLvl(resultSet.getString(9));
+                Blob blob = resultSet.getBlob("g_photo");
+                InputStream inputStream = blob.getBinaryStream();
+                grouping.setPhoto(inputStream.readAllBytes());
+                blob.free();
             }
         } catch (SQLException sqlException) {
             sqlException.printStackTrace();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
+        } catch (IOException ioException) {
+            ioException.printStackTrace();
         }
         System.out.println("Succes by PrimaryInfo g");
         return this;

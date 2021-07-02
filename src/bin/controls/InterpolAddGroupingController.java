@@ -14,14 +14,19 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
+import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.nio.file.Files;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.text.ParseException;
@@ -65,6 +70,9 @@ public class InterpolAddGroupingController {
             ButtonUpdate;
     @FXML
     private AnchorPane AnchorPaneMidle;
+
+    @FXML
+    private ImageView Photo;
 
     Select selecting = new Select();
     public static Stage stage = new Stage();
@@ -138,6 +146,14 @@ public class InterpolAddGroupingController {
                 stage.setY(event.getScreenY() + yOffset);
             }
         });
+        Photo.setOnMouseClicked(e -> {
+            File file = new FileChooser().showOpenDialog(null);
+            try {
+                Photo.setImage(new Image(String.valueOf(file.toURL())));
+            } catch (MalformedURLException malformedURLException) {
+                malformedURLException.printStackTrace();
+            }
+        });
     }
 
     private void UpdateGrouping()
@@ -169,7 +185,13 @@ public class InterpolAddGroupingController {
             grouping.setName(FieldName.getText()).setSpecification(FieldSpecification.getText()).setLocation(ChoiceBoxLocation.getValue())
                     .setAboutGrouping(AreaAboutText.getText()).setCreationDate(sqldate).setCountry(FieldCityCreation.getText()).setMember(SpinnerMembers.getValue())
                     .setDangerLvl(ChoiceBoxDangerLvl.getValue()).setWantedBy(ChoiceBoxWanted.getValue());
-
+            try {
+                byte [] bytes = Files.readAllBytes(new File(String.valueOf(Photo.getImage().getUrl().replaceAll("file:/", ""))).toPath());
+                System.out.println("Length " + bytes.length);
+                grouping.setPhoto(bytes);
+            } catch (IOException ioException) {
+                ioException.printStackTrace();
+            }
             sqlUpdateThread sqlupdate = new sqlUpdateThread();
             sqlupdate.start();
             sqlupdate.join();
@@ -185,6 +207,7 @@ public class InterpolAddGroupingController {
         finally {
             alert.show();
         }
+
     }
     private void AddGrouping()
     {
@@ -213,7 +236,13 @@ public class InterpolAddGroupingController {
             grouping.setName(FieldName.getText()).setSpecification(FieldSpecification.getText()).setLocation(ChoiceBoxLocation.getValue())
                     .setAboutGrouping(AreaAboutText.getText()).setCreationDate(sqldate).setCountry(FieldCityCreation.getText()).setMember(SpinnerMembers.getValue())
                     .setDangerLvl(ChoiceBoxDangerLvl.getValue()).setWantedBy(ChoiceBoxWanted.getValue());
-
+            try {
+                byte [] bytes = Files.readAllBytes(new File(String.valueOf(Photo.getImage().getUrl().replaceAll("file:/", ""))).toPath());
+                System.out.println("Length " + bytes.length);
+                grouping.setPhoto(bytes);
+            } catch (IOException ioException) {
+                ioException.printStackTrace();
+            }
             sqlAddThread sqladd = new sqlAddThread();
             sqladd.start();
             sqladd.join();

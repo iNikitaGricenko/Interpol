@@ -258,7 +258,6 @@ public class InterpolSearchCrimeController {
         TextCounterAge.setVisible(false);
         SliderAge.setVisible(false);
         CurrentAge.setVisible(false);
-        //PersonLocked.setVisible(false);
 
         TextMain.setText("Result: ");
 

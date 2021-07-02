@@ -23,7 +23,6 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
-import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -207,24 +206,6 @@ public class InterpolAddCrimeController {
                 malformedURLException.printStackTrace();
             }
         });
-    }
-
-    public void SaveFromPhoto(File file) {
-        try {
-            byte [] bytes = Files.readAllBytes(file.toPath());
-        } catch (IOException ioException) {
-            ioException.printStackTrace();
-        }
-    }
-
-    public void SaveToPhoto() {
-        BufferedImage image5;
-        /*try {
-            image5 = ImageIO.read(new ByteArrayInputStream(bytes));
-            ImageIO.write(image5, "jpg", new File("D:/NikitaS-site/snap5.jpg"));
-        } catch (IOException ioException) {
-            ioException.printStackTrace();
-        }*/
     }
 
     public void UpdateCrime(){

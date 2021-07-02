@@ -29,6 +29,10 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
@@ -246,7 +250,6 @@ public class InterpolSearchGroupingController {
         MainFlowPane.setVisible(false);
         GridPaneResult.setVisible(true);
         ButtonSearching.setVisible(false);
-        LockedGroup.setVisible(false);
 
         TextMain.setText("RESULT: ");
         LabelName.setText(grouping.getName());
@@ -259,6 +262,21 @@ public class InterpolSearchGroupingController {
         LabelName6.setText(String.valueOf(grouping.getMember()));
         LabelName7.setText(grouping.getDangerLvl());
         LabelName8.setText(grouping.getWantedBy());
+
+        System.out.println(grouping.getPhoto().length);
+        BufferedImage image5 = null;
+        try {
+            image5 = ImageIO.read(new ByteArrayInputStream(grouping.getPhoto()));
+            ImageIO.write(image5, "jpg", new File("temp/temp.jpg"));
+            File file = new File("temp/temp.jpg");
+            System.out.println(file.getPath());
+            LockedGroup.setImage(new Image(String.valueOf(file.toURL())));
+            LockedGroup.setFitHeight(200);
+            LockedGroup.setFitWidth(250);
+            LockedGroup.setLayoutX(LockedGroup.getLayoutX() + 500);
+        } catch (IOException ioException) {
+            ioException.printStackTrace();
+        }
     }
 
     public void OpenNewScene(Button button, String Window, String Title, String key)

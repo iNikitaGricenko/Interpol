@@ -13,6 +13,7 @@ public class Grouping extends Model{
     private String DangerLvl = "";
     private int Member;
     private String WantedBy = "";
+    private byte [] Photo = null;
 
     private List<Crime> crimes;
 
@@ -111,6 +112,13 @@ public class Grouping extends Model{
 
     public Grouping setDangerLvl(String dangerLvl) {
         DangerLvl = dangerLvl;
+        return this;
+    }
+
+    public byte [] getPhoto() {return Photo;}
+
+    public Grouping setPhoto(byte [] bytes) {
+        Photo = bytes;
         return this;
     }
 }

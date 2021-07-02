@@ -389,7 +389,7 @@
                   <DropShadow blurType="GAUSSIAN" height="24.0" radius="11.25" width="23.0" />
                </effect>
             </Pane>
-            <ImageView blendMode="DARKEN" fitHeight="213.0" fitWidth="429.0" layoutX="474.0" layoutY="204.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="Photo" blendMode="DARKEN" fitHeight="213.0" fitWidth="429.0" layoutX="474.0" layoutY="204.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@drawable/LockedGroup.jpg" />
                </image>
@@ -405,6 +405,7 @@
                   <Font name="Bell MT" size="27.0" />
                </font>
             </Button>
+            <Text layoutX="614.0" layoutY="413.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Click to add photo" />
          </children>
          <effect>
             <Blend mode="SOFT_LIGHT" />
