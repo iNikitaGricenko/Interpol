@@ -1,6 +1,7 @@
 # Interpol
 <h3>Is my first coursework on Java language.</h3>
 <label>At that moment my experience with Java was 3-4 months.</label>
+<p><blockquote>I know there is a "shit code" here, but I will ask you not to judge strictly, after all, the first project</blockquote></p>
 <div>
   <h4>The essence of the work</h4>
   <p style="color:red">Create application, which will works with user data (login, password, etc), and "criminals" persons, groupings using Database. More accurately - MySQL with jdbc.
